@@ -8,16 +8,23 @@
 
   <script>
     // start with strings, numbers and booleans
-
+    let sam = "sam";
+    let sam2 = sam;
+    console.log(sam, sam2);
+    sam = "sebas";
+    console.log(sam, sam2);
     // Let's say we have an array
     const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
 
     // and we want to make a copy of it.
-
+    const team = players;
+    console.log(team);
     // You might think we can just do something like this:
 
     // however what happens when we update that array?
-
+    team[3] = "jhon";
+    console.log(team);
+    console.log(players);
     // now here is the problem!
 
     // oh no - we have edited the original array too!
@@ -27,15 +34,26 @@
     // So, how do we fix this? We take a copy instead!
 
     // one way
+    const people = [...players];
+    console.log(people);
+    people[3] = "panchi";
+    console.log(people);
+    console.log(players);
 
     // or create a new array and concat the old one in
+    const peps = [].concat(players);
 
     // or use the new ES6 Spread
+    const jugadores = players.slice();
+    console.log(jugadores);
+    jugadores[3] = "manuel";
+    console.log(jugadores);
+    console.log(players);
 
     // now when we update it, the original one isn't changed
 
     // The same thing goes for objects, let's say we have a person object
-
+    console.clear();
     // with Objects
     const person = {
       name: 'Wes Bos',
@@ -43,9 +61,15 @@
     };
 
     // and think we make a copy:
+    const captain = person;
+    captain.age = 99;
+    console.log(captain);
+    console.log(person);
 
     // how do we take a copy instead?
-
+    const cap2 = Object.assign({}, person, {age: 50});
+    console.log(cap2);
+    console.log(person);
     // We will hopefully soon see the object ...spread
 
     // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
